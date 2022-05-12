@@ -22,6 +22,7 @@
                             <option value="mip">Maximum intensity projection</option>
                             <option value="iso">Isosurface extraction</option>
                             <option value="eam">Emission-absorption model</option>
+                            <option value="eamub">Emission-absorption model (unbiased)</option>
                             <option value="dos">Directional occlusion shading</option>
                             <option value="lao">Local ambient occlusion</option>
                             <option value="mcs">Single scattering</option>
@@ -51,6 +52,38 @@
                 </ui-accordion>
                 <ui-accordion bind="renderingContextSettingsContainer">
                     <span slot="label">Context</span>
+                </ui-accordion>
+                <ui-accordion>
+                    <span slot="label">Record animation</span>
+                    <ui-field>
+                        <label slot="label">Start time (sec)</label>
+                        <input type="number" bind="startTime" value="0"></input>
+                    </ui-field>
+                    <ui-field>
+                        <label slot="label">End time (sec)</label>
+                        <input type="number" bind="endTime" value="1"></input>
+                    </ui-field>
+                    <ui-field>
+                        <label slot="label">Render time per frame (sec)</label>
+                        <input type="number" bind="frameTime" value="1" min="0"></input>
+                    </ui-field>
+                    <ui-field>
+                        <label slot="label">FPS</label>
+                        <input type="number" bind="fps" value="30" min="0"></input>
+                    </ui-field>
+                    <ui-field>
+                        <label slot="label">Output type</label>
+                        <select bind="type">
+                            <option value="video">Video (not working yet)</option>
+                            <option value="images" selected>Image sequence</option>
+                        </select>
+                    </ui-field>
+                    <ui-field>
+                        <button bind="record">Record</button>
+                    </ui-field>
+                    <ui-field>
+                        <ui-progress-bar bind="animationProgress" value="0"></ui-progress-bar>
+                    </ui-field>
                 </ui-accordion>
             </div>
 
